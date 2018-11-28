@@ -2,8 +2,8 @@ class Main:
 
 	@staticmethod
 	def main():
-		annuity = Main.compute_annuity(r=0.035, n=23, fv=10000000)	
-		print("Annuity: " + str(int(annuity)) + " INR")
+		fv = Main.compute_fv_annuity(a=150000, r=0.08, n=23)	
+		print("FV: " + str(int(fv)) + " INR")
 
 	# a( ((1+r)^n)-1 )/r = fv; => a = (fv*r) / ( ((1+r)^n)-1 )
 	@staticmethod	
@@ -14,5 +14,15 @@ class Main:
 		numerator = fv*r
 		denominator = ((1+r)**n)-1
 		return numerator/denominator
+
+	# fv = a( ((1+r)^n)-1 )/r
+	@staticmethod
+	def compute_fv_annuity(a, r, n):
+		a = float(a)
+		r = float(r)
+		n = float(n)
+		numerator = (1+r)**n
+		numerator = (numerator-1)*a
+		return numerator/r
 
 Main.main()
